@@ -160,3 +160,28 @@ gpt-4/summarization_data/
 gpt-4/summarization_data/README.md
 
 revised_examples/
+
+*.ipynb_checkpoints
+
+# data and outputs
+hallucination_data/
+outputs/
+physionet.org/
+*.pth
+*.bin
+*.safetensors
+wandb/
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
