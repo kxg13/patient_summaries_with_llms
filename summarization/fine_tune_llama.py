@@ -161,7 +161,7 @@ def main():
         wandb.init(project=f"mimic-iv-note-di-bhc_{short_model_name}_parameter-tuning", config=args, tags=[], notes="")
         
     # Load model
-    hf_token = ''
+    hf_token = None  # Use cached token from huggingface-cli login
     model_name = args.model_name_or_path
     model = AutoModelForCausalLM.from_pretrained(model_name,
                                                 load_in_8bit=True,
@@ -306,7 +306,7 @@ def main():
                     gradient_accumulation_steps=args.gradient_accumulation_steps,
                     per_device_eval_batch_size=args.batch_size,
                     eval_accumulation_steps=args.gradient_accumulation_steps,
-                    evaluation_strategy="steps",
+                    eval_strategy="steps",
                     max_steps=args.max_steps,
                     save_steps=args.save_and_logging_steps, # for laod_best_model_at_end save_steps must be multiple of eval_steps
                     logging_steps=args.save_and_logging_steps, # eval_steps defaults to this
